@@ -60,7 +60,6 @@ class App extends Component {
       contact => contact.id !== newContact.id
     );
     this.setState(() => ({ contacts: [newContact, ...newContacts] }));
-    this.setState({ contactRow: { id: '', name: '', number: '' } });
     this.modalToggle();
   };
 
@@ -90,6 +89,8 @@ class App extends Component {
 
   modalToggle = () => {
     document.querySelector('body').classList.toggle('no-scroll');
+    this.state.modalShow &&
+      this.setState({ contactRow: { id: '', name: '', number: '' } });
     this.setState(({ modalShow }) => ({
       modalShow: !modalShow,
     }));
